@@ -1,3 +1,40 @@
+<?php
+// Define the directory to save uploaded files
+$uploadDir = 'uploads/';
+
+// Create uploads directory if it doesn't exist
+if (!file_exists($uploadDir)) {
+    mkdir($uploadDir, 0777, true);
+}
+
+$message = '';
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['files'])) {
+    // Loop through uploaded files
+    foreach ($_FILES['files']['tmp_name'] as $key => $tmpName) {
+        $fileName = $_FILES['files']['name'][$key];
+        $fileSize = $_FILES['files']['size'][$key];
+        $fileTmpName = $_FILES['files']['tmp_name'][$key];
+        $fileError = $_FILES['files']['error'][$key];
+        
+        if ($fileError === UPLOAD_ERR_OK) {
+            // Move the uploaded file to the upload directory
+            $targetFile = $uploadDir . basename($fileName);
+            if (move_uploaded_file($fileTmpName, $targetFile)) {
+                $message = 'File uploaded successfully!';
+            } else {
+                $message = 'Error uploading file.';
+            }
+        } else {
+            $message = 'There was an error with the file upload.';
+        }
+    }
+}
+
+// Retrieve list of uploaded files
+$files = array_diff(scandir($uploadDir), array('.', '..')); // List files in the uploads directory
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,18 +133,18 @@
         </div>
         <ul class="nav flex-column">
             <li class="nav-item mb-3">
-                <a class="nav-link text-dark d-flex align-items-center" href="main.php">
+                <a class="nav-link text-dark d-flex align-items-center" href="index.php">
                     <ion-icon name="home-outline" class="me-2"></ion-icon> <span>Beranda</span>
-                </a>
-            </li>
-            <li class="nav-item mb-3">
-                <a class="nav-link text-dark d-flex align-items-center" href="history.php">
-                    <ion-icon name="time-outline" class="me-2"></ion-icon> <span>History</span>
                 </a>
             </li>
             <li class="nav-item mb-3">
                 <a class="nav-link text-dark d-flex align-items-center" href="upload.php">
                     <ion-icon name="cloud-upload-outline" class="me-2"></ion-icon> <span>Upload</span>
+                </a>
+            </li>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-dark d-flex align-items-center" href="history.php">
+                    <ion-icon name="time-outline" class="me-2"></ion-icon> <span>History</span>
                 </a>
             </li>
         </ul>
@@ -119,8 +156,11 @@
     <!-- Main Content -->
     <div class="container mt-4">
         <h1>Upload File</h1>
+        <?php if ($message): ?>
+            <div class="alert alert-info"><?php echo $message; ?></div>
+        <?php endif; ?>
         <!-- Form Upload -->
-        <form id="uploadForm" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="fileInput" class="form-label">Pilih File</label>
                 <input type="file" class="form-control" id="fileInput" name="files[]" multiple>
@@ -140,8 +180,15 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody id="fileList">
-                    <!-- File rows will be added dynamically -->
+                <tbody>
+                    <?php foreach ($files as $index => $file): ?>
+                        <tr>
+                            <td><?php echo $index + 1; ?></td>
+                            <td><?php echo $file; ?></td>
+                            <td><?php echo filesize($uploadDir . $file) . ' bytes'; ?></td>
+                            <td><a href="<?php echo $uploadDir . $file; ?>" download class="btn btn-sm btn-success">Download</a></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

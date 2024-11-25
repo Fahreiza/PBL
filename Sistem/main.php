@@ -102,18 +102,18 @@
         </div>
         <ul class="nav flex-column">
             <li class="nav-item mb-3">
-                <a class="nav-link text-dark d-flex align-items-center" href="#">
+                <a class="nav-link text-dark d-flex align-items-center" href="main.php">
                     <ion-icon name="home-outline" class="me-2"></ion-icon> <span>Beranda</span>
+                </a>
+            </li>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-dark d-flex align-items-center" href="history.php">
+                    <ion-icon name="time-outline" class="me-2"></ion-icon> <span>History</span>
                 </a>
             </li>
             <li class="nav-item mb-3">
                 <a class="nav-link text-dark d-flex align-items-center" href="upload.php">
                     <ion-icon name="cloud-upload-outline" class="me-2"></ion-icon> <span>Upload</span>
-                </a>
-            </li>
-            <li class="nav-item mb-3">
-                <a class="nav-link text-dark d-flex align-items-center" href="#">
-                    <ion-icon name="time-outline" class="me-2"></ion-icon> <span>History</span>
                 </a>
             </li>
         </ul>

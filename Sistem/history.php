@@ -101,20 +101,15 @@
                 </a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link text-dark d-flex align-items-center" href="info.php">
-                    <ion-icon name="information-circle-outline" class="me-2"></ion-icon> <span>Info</span>
-                </a>
-            </li>
-            <li class="nav-item mb-3">
-                <a class="nav-link text-dark d-flex align-items-center" href="history.php">
-                    <ion-icon name="time-outline" class="me-2"></ion-icon> <span>History</span>
-                </a>
-            </li>
-            <li class="nav-item mb-3">
                 <a class="nav-link text-dark d-flex align-items-center" href="upload.php">
                     <ion-icon name="cloud-upload-outline" class="me-2"></ion-icon> <span>Upload</span>
                 </a>
             </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link text-dark d-flex align-items-center" href="history.php">
+                        <ion-icon name="time-outline" class="me-2"></ion-icon> <span>History</span>
+                    </a>
+                </li>
         </ul>
     </div>
 
