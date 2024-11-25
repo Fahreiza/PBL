@@ -4,23 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <title>Home</title>
     <style>
-        /* Style for hidden sidebar */
+        /* Sidebar Styles */
         #sidebar {
             position: fixed;
             left: -250px;
-            top: 56px; /* Adjust to match the height of the horizontal navbar */
+            top: 56px;
             height: calc(100vh - 56px);
             width: 250px;
             background-color: #f8f9fa;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             transition: left 0.3s ease-in-out;
-            z-index: 1050; /* Ensure it is above other content */
+            z-index: 1050;
         }
 
         #sidebar.active {
@@ -34,17 +33,12 @@
             width: 100vw;
             height: 100vh;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1040; /* Just below the sidebar */
+            z-index: 1040;
             display: none;
         }
 
         #overlay.active {
             display: block;
-        }
-
-        /* Ensure the sidebar toggle button is clickable */
-        #sidebarToggle {
-            z-index: 1060;
         }
     </style>
 </head>
@@ -102,18 +96,23 @@
         </div>
         <ul class="nav flex-column">
             <li class="nav-item mb-3">
-                <a class="nav-link text-dark d-flex align-items-center" href="#">
+                <a class="nav-link text-dark d-flex align-items-center" href="index.php">
                     <ion-icon name="home-outline" class="me-2"></ion-icon> <span>Beranda</span>
+                </a>
+            </li>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-dark d-flex align-items-center" href="info.php">
+                    <ion-icon name="information-circle-outline" class="me-2"></ion-icon> <span>Info</span>
+                </a>
+            </li>
+            <li class="nav-item mb-3">
+                <a class="nav-link text-dark d-flex align-items-center" href="history.php">
+                    <ion-icon name="time-outline" class="me-2"></ion-icon> <span>History</span>
                 </a>
             </li>
             <li class="nav-item mb-3">
                 <a class="nav-link text-dark d-flex align-items-center" href="upload.php">
                     <ion-icon name="cloud-upload-outline" class="me-2"></ion-icon> <span>Upload</span>
-                </a>
-            </li>
-            <li class="nav-item mb-3">
-                <a class="nav-link text-dark d-flex align-items-center" href="#">
-                    <ion-icon name="time-outline" class="me-2"></ion-icon> <span>History</span>
                 </a>
             </li>
         </ul>
@@ -124,10 +123,35 @@
 
     <!-- Main Content -->
     <div class="container mt-4">
-        <h1>Welcome to SIBATTA</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae facere obcaecati asperiores quod animi vero maxime quidem nobis enim suscipit. Alias illum dolores debitis reiciendis ea numquam eum. Deleniti, aut.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos consectetur numquam magni sapiente, velit fugiat dolore alias nemo. Veritatis esse labore non nam praesentium beatae unde quod, quam modi expedita.
-        </p>
+        <h1>History</h1>
+        <table class="table table-bordered table-striped mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Nama File</th>
+                    <th>Tanggal Upload</th>
+                    <th>Ukuran File</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Contoh data -->
+                <tr>
+                    <td>1</td>
+                    <td>file1.pdf</td>
+                    <td>2024-11-25</td>
+                    <td>512 KB</td>
+                    <td><button class="btn btn-danger btn-sm">Hapus</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>file2.jpg</td>
+                    <td>2024-11-24</td>
+                    <td>1.2 MB</td>
+                    <td><button class="btn btn-danger btn-sm">Hapus</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- Optional JavaScript -->
