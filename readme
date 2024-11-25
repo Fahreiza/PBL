@@ -1,0 +1,15 @@
+User(Mahasiswa)
+-login
+-Upload Dokumen
+-Lihat Reaksi
+-Chat Admin
+
+user(Dosen)
+-Melihat Dokumen
+-Memberi Reaksi
+
+Admin
+-Tambah Mahasiswa
+-Tambah Dosen
+-Chat Mahasiswa
+-Report (History)
